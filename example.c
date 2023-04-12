@@ -12,6 +12,8 @@ Test_Proc buggyFib_test(){
 	Tp(buggyFib(0) == 1);
 	Tp(buggyFib(4) == 5);
 
+	Test_Log("Attempting to test easter egg with %0d...", 69);
+
 	Tp(buggyFib(420) > 10000); // Assertion will fail
 
 	Test_End();
