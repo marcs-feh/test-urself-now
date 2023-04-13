@@ -10,11 +10,11 @@ Test_Proc buggyFib_test(){
 	Test_Begin("Fibonacci");
 
 	Tp(buggyFib(0) == 1);
-	Tp(buggyFib(4) == 5);
 
 	Test_Log("Attempting to test easter egg with %0d...", 69);
-
 	Tp(buggyFib(420) > 10000); // Assertion will fail
+
+	Tp(buggyFib(4) == 5);
 
 	Test_End();
 }
