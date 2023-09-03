@@ -1,4 +1,6 @@
-#include "test_urself.h"
+#include "test_urself.hpp"
+
+using uint = unsigned int;
 
 int buggyFib(int n){
 	if(n < 2) { return 1; }
