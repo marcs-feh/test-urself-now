@@ -18,6 +18,7 @@ constexpr auto COL_RESET = "\e[0m";
 constexpr auto COL_FAIL  = "";
 constexpr auto COL_PASS  = "";
 constexpr auto COL_TITLE = "";
+constexpr auto COL_RESET = "";
 #endif
 
 struct Test {
@@ -41,11 +42,31 @@ struct Test {
 		if(error_count > 0){
 			printf("%sFAIL%s", COL_FAIL, COL_RESET);
 		} else {
-			printf("%sPASS%s", COL_FAIL, COL_PASS);
+			printf("%sPASS%s", COL_PASS, COL_RESET);
 		}
 		printf(" ok in %u/%u\n", tests_count - error_count, tests_count);
 	}
 };
+template<typename T>
+bool ensureAll(T&& v){
+	return bool(v);
+}
+
+template<typename T, typename... Args>
+bool ensureAll(T&& v, Args&& ...args){
+	return bool(v) && ensureAll(args...);
+}
+
+template<typename T>
+bool ensureAny(T&& v){
+	return bool(v);
+}
+
+template<typename T, typename... Args>
+bool ensureAny(T&& v, Args&& ...args){
+	return bool(v) || ensureAny(args...);
+}
+
 
 }
 
@@ -61,6 +82,12 @@ struct Test {
 #define Test_Log(fmt, ...) printf("  >> " fmt "\n", __VA_ARGS__);
 
 #define Tp(expr_) { _test_.assertExp( (expr_), #expr_ ); }
+
+#define T_All(...) { _test_.assertExp(tu::ensureAll(__VA_ARGS__), "All[ " #__VA_ARGS__  " ]"); }
+
+#define T_None(...) { _test_.assertExp(!tu::ensureAll(__VA_ARGS__), "All[ " #__VA_ARGS__  " ]"); }
+
+#define T_Any(...) { _test_.assertExp(tu::ensureAny(__VA_ARGS__), "Any[ " #__VA_ARGS__  " ]");}
 
 
 #endif /* Include guard */
