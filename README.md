@@ -10,11 +10,11 @@ point where there's no point making documentation.
 No point in "installing" or cloning a <100 line header, just get it:
 
 C:
-```
-$ wget https://raw.githubusercontent.com/marcs-feh/test-urself-now/main/test_urself.h
+```sh
+wget https://raw.githubusercontent.com/marcs-feh/test-urself-now/main/test_urself.h
 ```
 
 C++:
-```
-$ wget https://raw.githubusercontent.com/marcs-feh/test-urself-now/main/test_urself.hpp
+```sh
+wget https://raw.githubusercontent.com/marcs-feh/test-urself-now/main/test_urself.hpp
 ```
