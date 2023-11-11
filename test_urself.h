@@ -4,9 +4,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-typedef unsigned int uint;
-typedef uint (*TestProc)(void*);
-
 #ifndef TEST_URSELF_COLORLESS
 #define TEST_COL_FAIL  "\e[0;31m"
 #define TEST_COL_PASS  "\e[0;32m"
@@ -21,8 +18,8 @@ typedef uint (*TestProc)(void*);
 
 struct tu_Test {
 	const char* title;
-	uint tests_count;
-	uint error_count;
+	int tests_count;
+	int error_count;
 };
 
 static
