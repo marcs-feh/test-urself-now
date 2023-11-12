@@ -7,7 +7,6 @@
 namespace tu {
 
 using uint = unsigned int;
-using TestProc = uint (*)(void);
 
 #ifndef TEST_URSELF_COLORLESS
 constexpr auto COL_FAIL  = "\e[0;31m";
